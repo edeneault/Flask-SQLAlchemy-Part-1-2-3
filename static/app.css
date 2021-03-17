@@ -1,0 +1,21 @@
+/* body {
+    background-color: #292b2c;
+} */
+
+.container {
+    max-width: 100%;
+    min-height: 600px;
+}
+
+.custom {
+    width: 75px !important;
+}
+
+img {
+    display: block;
+    width: 15vw;
+    height: 35vh;
+    object-fit: cover;
+    object-position: top left;
+    /* or object-fit: contain; */
+}

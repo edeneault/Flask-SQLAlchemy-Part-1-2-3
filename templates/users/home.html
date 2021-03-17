@@ -1,0 +1,37 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+
+<h5 class="text-dark col-sm-4 text-center">All Users</h5>
+<table class="table table-bordered col-sm-4">
+    <thead class="bg-dark text-light ">
+        <th scope="col">ID</th> 
+        <th scope="col">USERS</th>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{user.id}}</td>
+            <td><a class="text-dark text-decoration-none" href="/users/{{user.id}}">{{user.full_name()}}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="col-sm-2 p-0 m-0">
+    <a class="btn btn-sm btn-secondary  " href="/users/adduser">ADD USER</a>
+</div>
+
+
+  {% endblock %}
+
+  <!-- <h2>Add New Pet</h2>
+  <form action="/" method="POST">
+    <input type="text" name="name" placeholder="name">
+    <input type="text" name="species" placeholder="species">
+    <input type="number" name="hunger" placeholder="hunger">
+    <button>Submit Pet</button>
+  </form> -->
