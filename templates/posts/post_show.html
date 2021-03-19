@@ -1,0 +1,24 @@
+{% extends 'users/details.html' %}
+
+<!-- {% block title %}{{ post.title }}{% endblock %} -->
+
+{% block post_show %}
+<div class="row m-1">
+    <div class="card rounded-lg border shadow col-md-9 pl-3 ml-1">
+        <div class="card-body text-dark">
+            <h5 class="text-dark pb-2">{{ post.title }}</h5>
+            <p class="text-dark">{{ post.content }}</p>
+            <p class="text-dark"><i>By {{ post.user.full_name }}
+                <!-- on {{ post.friendly_date }} -->
+            </i></p>
+
+            <form>
+                <button class="btn btn-sm btn-outline-primary custom" formmethod="GET" formaction="/users/{{ post.user_id }}">Cancel</button>
+                <a class="btn btn-sm btn-outline-success text-success custom" href="/users/{{ user.id }}/posts/{{ post.id}}/edit">EDIT</a>      
+                <button class="btn  btn-sm btn-outline-danger custom" formmethod="POST" formaction="/posts/{{ post.id }}/delete">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

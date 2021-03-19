@@ -3,13 +3,13 @@
 {% block title %}{{ user.full_name }}{% endblock %}
 
 {% block content %}
-<div class="row m-5">
-    <div class="card rounded-lg border col-md-3 p-0 m-0">
-        <img src="{{user.image_url}}" class="card-img-top p-0 m-0" alt="USER IMAGE">
+<div class="row mt-5">
+    <div class="card rounded-lg border shadow col-12 col-md-3 p-0 mx-1">
+        <img src="{{user.image_url}}" class="img card-img-top col-sm-12 p-0 m-0" alt="USER IMAGE">
         <div class="card-body text-dark">
             <div class="row pb-1">
                 <div class="col-sm-12">
-                    <h5 class="card-title text-center">{{user.full_name()}}</h5>
+                    <h5 class="card-title text-center">{{user.full_name}}</h5>
                     <p class="card-text">First Name: {{user.first_name}}</p>
                     <p class="card-text">Last Name: {{user.last_name}}</p>
                 </div>
@@ -18,7 +18,7 @@
                 <div class="col-sm-12">
                     <form>
                         <button class="btn btn-outline-primary btn-sm custom" formaction="/users/{{ user.id }}/edit" formmethod="GET">EDIT</button>
-                        <button class="btn btn-outline-danger btn-sm custom" formaction="/users/{{ user.id }}/delete" formmethod="POST">DELETE</button>
+                        <button class="btn btn-outline-danger btn-sm custom"  formaction="/users/{{ user.id }}/delete" formmethod="POST">DELETE</button>
                     </form>
                 </div>
                 <div class="offset-10 col-sm-12">
@@ -26,9 +26,30 @@
                 </div>
             </div>
         </div>
-      </div>
+    </div>
 
+    <div class="card rounded-lg border shadow col-md-6 p-0 m-0">
+        <div class="card-body text-dark">
+            <ul class="list-group">
+                {% for post in user.posts %}
+                <li class="card rounded-lg border shadow col-md-12 p-3 mx-1">
+                  <a class="card-link text-dark text-decoration-none" href="/users/{{ user.id }}/posts/{{ post.id}}">{{ post.title }}</a>
+                  <small>{{ post.friendly_date }}</small>
+                </li>
+                {% endfor %}
+              </ul>
+          
+              <div class="row p-2">
+                <div class="col-sm-12">
+                    <p><a href="/users/{{ user.id }}/posts/add_post" class="btn btn-outline-primary btn-sm custom">Add Post</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 </div>
-  
-
+{% block edit_post %} {% endblock %}
+{% block post_show %} {% endblock %}
+{% block add_post_form %} {% endblock %}
 {% endblock %}
+

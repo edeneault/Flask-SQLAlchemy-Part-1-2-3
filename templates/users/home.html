@@ -15,8 +15,8 @@
     <tbody>
         {% for user in users %}
         <tr>
-            <td>{{user.id}}</td>
-            <td><a class="text-dark text-decoration-none" href="/users/{{user.id}}">{{user.full_name()}}</a></td>
+            <td class="link">{{user.id}}</td>
+            <td><a class="text-dark text-decoration-none" href="/users/{{user.id}}">{{user.full_name}}</a></td>
         </tr>
         {% endfor %}
     </tbody>
@@ -26,12 +26,21 @@
 </div>
 
 
-  {% endblock %}
+<div class="card rounded-lg border shadow col-md-4 p-0 m-0 mt-3 pt-3">
+    <h5 class="text-dark col-sm-6 text-center">RECENT POSTS</h5>
+    <div class="card-body text-dark">
+        <ul class="list-group">
+            {% for post in recent_posts %}
+            <li class="card rounded-lg border shadow col-md-12 p-3 mx-1">
+                <a class="card-link text-dark text-decoration-none" href="/users/{{ post.user.id }}/posts/{{ post.id}}">{{ post.title }}</a>
+                <small>{{ post.friendly_date }}</small>
+            </li>
+            {% endfor %}
+            </ul>
+    </div>
+</div>
 
-  <!-- <h2>Add New Pet</h2>
-  <form action="/" method="POST">
-    <input type="text" name="name" placeholder="name">
-    <input type="text" name="species" placeholder="species">
-    <input type="number" name="hunger" placeholder="hunger">
-    <button>Submit Pet</button>
-  </form> -->
+
+{% endblock %}
+
+  

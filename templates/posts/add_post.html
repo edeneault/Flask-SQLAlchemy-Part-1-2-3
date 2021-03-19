@@ -1,0 +1,39 @@
+{% extends 'users/details.html' %}
+
+
+{% block add_post_form %}
+<div class="row m-1">
+    <div class="card rounded-lg border shadow col-md-9 pl-3 ml-1">
+        <div class="col-sm-12 pt-2 text-right">
+            <a class="offset-11 col-sm-1" href="/users/{{ user.id }}"><i class="text-dark ml-right far fa-times-circle" ></i></a>
+        </div>
+        <div class="card-body text-dark">
+            <h5 class="text-dark pb-2">ADD POST</h5>
+            <p><i>Author: {{ user.full_name }}</i></p>
+
+            <form method="POST">
+                <div class="form-group row">
+                    <label for="title" class="col-sm-2 col-form-label">Title</label>
+                    <div class="col-sm-10">
+                    <input class="form-control" id="title" name="title">
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <label for="content" class="col-sm-2 col-form-label">Content</label>
+                    <div class="col-sm-10">
+                    <textarea class="form-control" id="content" name="content"></textarea>
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <div class="mr-auto">
+                    <button class="btn btn-sm btn-outline-success custom" type="submit" >Add</button>
+                    </div>
+                </div> 
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

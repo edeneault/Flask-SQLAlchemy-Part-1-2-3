@@ -4,18 +4,26 @@
 
 .container {
     max-width: 100%;
-    min-height: 600px;
+    min-height: 400px;
 }
 
 .custom {
-    width: 75px !important;
+    width: 100px !important;
 }
 
-img {
+.img {
     display: block;
-    width: 15vw;
-    height: 35vh;
+    /* width: 25vw; */
+    max-height: 40vh;
     object-fit: cover;
-    object-position: top left;
+    object-position: 50% 50%;
     /* or object-fit: contain; */
+}
+
+a.card-link:hover {
+    color: lightGray !important;
+}
+
+a.text-dark:hover {
+    color: lightGray !important;
 }
