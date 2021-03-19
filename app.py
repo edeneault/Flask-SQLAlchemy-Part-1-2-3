@@ -150,7 +150,6 @@ def posts_update(post_id):
 
     db.session.add(post)
     db.session.commit()
-    flash(f"Post '{post.title}' edited.")
 
     return redirect(f"/users/{post.user_id}")
 
@@ -163,6 +162,5 @@ def posts_destroy(post_id):
 
     db.session.delete(post)
     db.session.commit()
-    flash(f"Post '{post.title} deleted.")
 
     return redirect(f"/users/{post.user_id}")
