@@ -5,42 +5,47 @@
 {% block title %}Users{% endblock %}
 
 {% block content %}
-
-<h5 class="text-dark col-sm-4 text-center">All Users</h5>
-<table class="table table-bordered col-sm-4">
-    <thead class="bg-dark text-light ">
-        <th scope="col">ID</th> 
-        <th scope="col">USERS</th>
-    </thead>
-    <tbody>
-        {% for user in users %}
-        <tr>
-            <td class="link">{{user.id}}</td>
-            <td><a class="text-dark text-decoration-none" href="/users/{{user.id}}">{{user.full_name}}</a></td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-<div class="col-sm-2 p-0 m-0">
-    <a class="btn btn-sm btn-secondary  " href="/users/adduser">ADD USER</a>
-</div>
-
-
-<div class="card rounded-lg border shadow col-md-4 p-0 m-0 mt-3 pt-3">
-    <h5 class="text-dark col-sm-6 text-center">RECENT POSTS</h5>
-    <div class="card-body text-dark">
-        <ul class="list-group">
-            {% for post in recent_posts %}
-            <li class="card rounded-lg border shadow col-md-12 p-3 mx-1">
-                <a class="card-link text-dark text-decoration-none" href="/users/{{ post.user.id }}/posts/{{ post.id}}">{{ post.title }}</a>
-                <small>{{ post.friendly_date }}</small>
-            </li>
-            {% endfor %}
+<div class="row mt-5">
+    <div class="card rounded-lg border bg-light shadow col-md-4 p-2 m-0">
+        <h5 class="text-dark text-center">All Users</h5>
+        <a class="btn btn-sm btn-outline-primary custom m-2" href="/users/adduser">ADD USER</a>
+        <table class="table table-bordered bg-light col-sm-12 ">
+            
+            <thead class="bg-dark text-light ">
+                <th scope="col">ID</th> 
+                <th scope="col">USERS</th>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td class="link">{{user.id}}</td>
+                    <td><a class="text-dark text-decoration-none" href="/users/{{user.id}}">{{user.full_name}}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>  
+    
+    <div class="card rounded-lg border bg-light shadow col-md-8  p-2 m-0">
+        <h5 class="text-dark col-sm-10 text-center">5 MOST RECENT POSTS</h5>
+        <div class="card-body text-dark">
+            <ul class="list-group">
+                {% for post in recent_posts %}
+                <li class="card rounded-lg border shadow col-md-12 p-3 mx-1">
+                    <a class="card-link text-dark text-decoration-none" href="/users/{{ post.user.id }}/posts/{{ post.id}}">{{ post.title }}</a>
+                    <small>{{ post.friendly_date }}</small>
+                </li>
+                {% endfor %}
             </ul>
+        </div>
     </div>
+    {% block add_user %} {% endblock %}
+    {% block edit_user %} {% endblock %}
 </div>
+
+
 
 
 {% endblock %}
 
-  
+

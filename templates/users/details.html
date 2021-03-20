@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="row mt-5">
-    <div class="card rounded-lg border shadow col-12 col-md-3 p-0 mx-1">
+    <div class="card rounded-lg border bg-light shadow col-12 col-md-3 p-0 m-0">
         <img src="{{user.image_url}}" class="img card-img-top col-sm-12 p-0 m-0" alt="USER IMAGE">
         <div class="card-body text-dark">
             <div class="row pb-1">
@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <div class="card rounded-lg border shadow col-md-6 p-0 m-0">
+    <div class="card rounded-lg border bg-light shadow col-md-9 p-0 m-0">
         <div class="card-body text-dark">
             <ul class="list-group">
                 {% for post in user.posts %}

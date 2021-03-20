@@ -1,6 +1,7 @@
-/* body {
-    background-color: #292b2c;
-} */
+body {
+    margin-bottom: 50px;
+    margin: 0
+}
 
 .container {
     max-width: 100%;
@@ -25,5 +26,9 @@ a.card-link:hover {
 }
 
 a.text-dark:hover {
+    color: lightGray !important;
+}
+
+a.text-success:hover {
     color: lightGray !important;
 }

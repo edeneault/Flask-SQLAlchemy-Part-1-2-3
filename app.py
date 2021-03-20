@@ -45,8 +45,9 @@ def show_user(user_id):
 @ app.route('/users/adduser', methods=["GET"])
 def users_new_form():
     """ Add User FORM """
-
-    return render_template('users/adduser.html')
+    users = User.query.order_by(User.last_name, User.first_name).all()
+    recent_posts = Post.query.order_by(Post.created_at.desc()).limit(5)
+    return render_template('users/adduser.html', users=users, recent_posts=recent_posts)
 
 
 @ app.route("/users/adduser", methods=["POST"])
@@ -70,8 +71,10 @@ def users_new():
 def users_edit(user_id):
     """ Handle user edit """
     user = User.query.get_or_404(user_id)
-    print(user)
-    return render_template('users/edit.html', user=user)
+    users = User.query.order_by(User.last_name, User.first_name).all()
+    recent_posts = Post.query.order_by(Post.created_at.desc()).limit(5)
+
+    return render_template('users/edit.html', user=user, users=users, recent_posts=recent_posts)
 
 
 @ app.route('/users/<int:user_id>/edit', methods=['POST'])

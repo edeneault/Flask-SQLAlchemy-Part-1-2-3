@@ -3,10 +3,12 @@
 
 
 {% block edit_post %}
+
 <div class="row m-1">
-    <div class="card rounded-lg border shadow col-md-9 pl-3 ml-1">
+    <div class="card rounded-lg border bg-light shadow col-md-12 pl-3 m-0">
         
-        <h5 class="text-dark p-2">EDIT POST</h5>
+        <h5 class="text-dark pt-2">EDIT POST</h5>
+        <sub class="text-dark pb-4">Author: {{post.user.full_name}} Created: {{post.friendly_date}}</sub>
         <form method="POST" action="/posts/{{ post.id }}/edit">
 
         <div class="form-group row">
