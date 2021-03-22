@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+
+    <div class="row mt-5">
+        <div class="card rounded-lg border bg-light shadow col-md-9  p-2 m-0">
+            <h5 class="text-dark col-sm-12 text-center">ALL POSTS</h5>
+            <div class="card-body text-dark">
+                <ul class="list-group">
+                    {% for post in posts %}
+                    <li class="card posts rounded-lg border shadow col-md-12 p-3 mx-1">
+                        <a class="card-link text-dark text-decoration-none" href="/users/{{ post.user.id }}/posts/{{ post.id}}">{{ post.title }}</a>
+                        <small>{{ post.friendly_date }}</small>
+                        <div class="tags col-sm-12">
+                            <small>TAGS: </small>
+                            {% for tag in post.tags %}
+                                <span class=" tags badge badge-pill badge-primary col-sm-1 ml-2">{{ tag.name }}</span>
+                            {% endfor %}
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+               
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

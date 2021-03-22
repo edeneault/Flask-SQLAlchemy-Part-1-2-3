@@ -30,26 +30,37 @@
 
     <div class="card rounded-lg border bg-light shadow col-md-9 p-0 m-0">
         <div class="card-body text-dark">
+            <h5 class="pb-2">{{user.full_name}}'s Posts</h5>
             <ul class="list-group">
                 {% for post in user.posts %}
-                <li class="card rounded-lg border shadow col-md-12 p-3 mx-1">
-                  <a class="card-link text-dark text-decoration-none" href="/users/{{ user.id }}/posts/{{ post.id}}">{{ post.title }}</a>
-                  <small>{{ post.friendly_date }}</small>
+                <li class="card posts rounded-lg border shadow col-md-12 p-3 mx-1">
+                    <a class="card-link text-dark text-decoration-none" href="/users/{{ user.id }}/posts/{{ post.id}}">{{ post.title }}</a>
+                    <small>{{ post.friendly_date }}</small>
+                    <div class="tags col-sm-12">
+                        <small>TAGS:
+                        {% for tag in post.tags %}
+                            <span class=" tags badge badge-pill badge-primary col-sm-1 ml-2">{{ tag.name }}</span>
+                        {% endfor %}
+                        </small>
+                    </div>
                 </li>
-                {% endfor %}
               </ul>
-          
-              <div class="row p-2">
+              {% endfor %}
+              <div class="row p-2 pt-4">
                 <div class="col-sm-12">
                     <p><a href="/users/{{ user.id }}/posts/add_post" class="btn btn-outline-primary btn-sm custom">Add Post</a></p>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 </div>
 {% block edit_post %} {% endblock %}
 {% block post_show %} {% endblock %}
 {% block add_post_form %} {% endblock %}
+</div>
+
+   
+
+
 {% endblock %}
 

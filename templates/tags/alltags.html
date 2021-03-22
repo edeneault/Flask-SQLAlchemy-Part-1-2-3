@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} TAGS {% endblock %}
+
+{% block content %}
+
+<div class="row mt-5">
+    <div class="card rounded-lg border bg-light shadow col-md-3  p-2 m-0">
+        <h5 class="text-dark col-sm-10 text-center">ALL TAGS</h5>
+        <div class="card-body text-dark">
+            <ul class="list-group">
+                {% for tag in tags %}
+                <li class="card posts rounded-lg border shadow col-md-12 p-3 mx-1">
+                    <p class="text-dark">Tag ID: {{ tag.id }}</p>
+                    <a href="/tags/{{ tag.id }}"><span class="badge badge-pill badge-primary col-sm-4">{{ tag.name }}</span></a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-sm-12">
+            <p><a href="/tags/addtag" class="btn btn-outline-primary btn-sm custom">Add TAG</a></p>
+        </div>
+    </div>
+    {% block tag_show %}{% endblock %}
+    {% block add_tag %}{% endblock %}
+    {% block edit_tag %}{% endblock %}
+</div>
+
+{% endblock %}

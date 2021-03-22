@@ -1,0 +1,27 @@
+{% extends 'tags/alltags.html' %}
+
+{% block tag_show %}
+ 
+    <div class="card rounded-lg border bg-light text-dark shadow col-md-3  p-2 m-0">
+        <div class="card-title">
+            <h5 class="text-dark  text-center">TAG INFORMATION</h5>        
+        </div>
+        
+        <div class="card-body text-dark">
+            <h6 class="pl-2">TAG NAME: <span class="badge badge-pill badge-primary align-top"> {{ tag.name }}</span></h6>
+            <form>
+                <button formmethod="GET" formaction="/tags/{{ tag.id }}/edit" class="btn btn-outline-primary btn-sm custom">EDIT</button>
+                <button formmethod="POST" formaction="/tags/{{ tag.id }}/delete" class="btn  btn-sm btn-outline-danger custom">DELETE</button>
+              </form>
+            <p class="pl-2 pb-2">All posts tagged with {{ tag.name }}</p>
+            <ul class="list-group">
+                {% for post in tag.posts %}
+                <li class="card posts rounded-lg border shadow col-md-12 p-3 mx-1">
+                    <a class="card-link text-dark text-decoration-none" href="/users/{{ post.user.id }}/posts/{{ post.id}}">{{ post.title }}</a>
+                </li>    
+                {% endfor %}
+            </ul> 
+        </div> 
+   </div>
+
+{% endblock %}

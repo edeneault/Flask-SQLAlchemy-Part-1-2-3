@@ -1,7 +1,9 @@
 from unittest import TestCase
 
+from datetime import datetime as dt
+import datetime
 from app import app
-from models import db, User
+from models import db, User, Post, Tag
 
 # Use test database and don't clutter tests with SQL
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly_test_db'
@@ -24,14 +26,15 @@ class UserModelTestCase(TestCase):
 
         db.session.rollback()
 
-    def full_name(self):
+    def test_full_name(self):
         """ User Class Method test """
-        user = User(first_name="firstName", last_name="lastName",
-                    image_url="https://a.wattpad.com/useravatar/ScuffedMisfit.256.87195.jpg")
-        self.assertEqual(user.full_name(), "firstName lastName")
+        user = User(first_name="firstName", last_name="lastName")
+        self.assertEqual(user.full_name, "firstName lastName")
 
-    def friendly_date(self):
+    def test_friendly_date(self):
         """ Post Class Method Test """
         post = Post(title="firstPost", content="content",
-                    created_at="2021-03-19 06:04:06.802286", user_id=1)
-        self.assertEqual(post.friendly_date(), "Fri Mar 19 2021, 6:04 AM")
+                    created_at=datetime.datetime(2021, 3, 19, 6, 4, 6, 802286), user_id=1)
+        self.assertEqual(post.friendly_date,
+                         "Fri Mar 19  2021, 6:04 AM")
+        # self.assertEqual(post.friendly_date(), "2021-03-19 06:04:06.802286")

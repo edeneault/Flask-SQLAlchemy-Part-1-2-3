@@ -8,30 +8,41 @@
     <div class="card rounded-lg border bg-light shadow col-md-12 pl-3 m-0">
         
         <h5 class="text-dark pt-2">EDIT POST</h5>
-        <sub class="text-dark pb-4">Author: {{post.user.full_name}} Created: {{post.friendly_date}}</sub>
+        <sub class="text-dark pb-4">Author: {{post.user.full_name}} </sub>
+        <sub class="text-dark pb-4">Created: {{post.friendly_date}}</sub>
         <form method="POST" action="/posts/{{ post.id }}/edit">
-
-        <div class="form-group row">
-            <label for="title" class="col-sm-2 col-form-label">Title</label>
-            <div class="col-sm-10">
-                <input class="form-control" id="title" name="title" value="{{ post.title }}">
+            <div class="form-group row">
+                <label for="title" class="col-sm-2 col-form-label">Title</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="title" name="title" value="{{ post.title }}">
+                </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label for="content" class="col-sm-2 col-form-label">Post Content</label>
-            <div class="col-sm-10">
-                <textarea class="form-control" rows="7" cols="40" id="content" name="content">{{ post.content }}</textarea>
+            <div class="form-group row">
+                <label for="content" class="col-sm-2 col-form-label">Post Content</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="5" cols="40" id="content" name="content">{{ post.content }}</textarea>
+                </div>
             </div>
-        </div>
-        
-        <div class="form-group row">
-            <div class="ml-auto mr-3">
-                <a href="/users/{{ post.user_id }}" class="btn  btn-sm btn-outline-info">CANCEL</a>
-                <button type="submit" class="btn btn-sm btn-outline-success custom">SAVE</button>
-            </div>
-        </div>
 
+            <div class=" form-check text-dark">
+                {% for tag in tags %}
+                <div class="col-md-1" >
+                <input class="form-check-input " type="checkbox" value="{{ tag.id }}" id="tag_{{ tag.id }}"
+                        {% if tag in post.tags %}checked{% endif %} name="tags">
+                <label class="form-check-label col-md-3 mr-4" for="tag_{{ tag.id }}">
+                    <span class="badge badge-pill badge-primary ml-2">{{ tag.name }}</span>
+                </label>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group row">
+                <div class="ml-auto mr-3 mt-3">
+                    <a href="/users/{{ post.user_id }}" class="btn btn-sm btn-outline-info">CANCEL</a>
+                    <button type="submit" class="btn btn-sm btn-outline-success custom">SAVE</button>
+                </div>
+            </div>
         </form>
     </div>
 </div>

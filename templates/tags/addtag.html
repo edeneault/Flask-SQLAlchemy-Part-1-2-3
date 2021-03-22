@@ -1,0 +1,25 @@
+{% extends 'tags/alltags.html' %}
+
+{% block add_tag %}
+
+<div class="card rounded-lg border bg-light text-dark shadow col-md-3  p-2 m-0">
+    <h5 class="text-dark text-center">ADD New Tag</h5>
+    <form class="text-dark bg-light" method="POST">
+
+        <div class="form-group col-sm-12 ">
+            <label for="name" class="col-sm-12 col-form-label">Tag Name</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter a tag name">
+            </div>
+        </div>
+
+        <div class="form-group col-md-4">
+            <div class="mr-auto ml-3">
+                <button type="submit" class="btn btn-outline-primary">Add</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

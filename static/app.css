@@ -1,11 +1,12 @@
 body {
     margin-bottom: 50px;
-    margin: 0
+    margin: 0px auto;
 }
 
 .container {
-    max-width: 100%;
+    max-width: 95%;
     min-height: 400px;
+    margin: 0px auto;
 }
 
 .custom {
@@ -14,21 +15,28 @@ body {
 
 .img {
     display: block;
-    /* width: 25vw; */
     max-height: 40vh;
     object-fit: cover;
     object-position: 50% 50%;
-    /* or object-fit: contain; */
+}
+
+.tags {
+    display: inline;
 }
 
 a.card-link:hover {
-    color: lightGray !important;
+    color: #0275d8 !important;
 }
 
 a.text-dark:hover {
-    color: lightGray !important;
+    color: #0275d8 !important;
 }
 
 a.text-success:hover {
     color: lightGray !important;
+}
+
+.posts:hover {
+    background-color: WhiteSmoke;
+    transform: scale(1.05);
 }

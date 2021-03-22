@@ -23,7 +23,9 @@
         <div class="navbar-nav col-sm-11">
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav align-self-center mr-auto ">
-                    <li class="nav-item "><a class="nav-link" href="/users">Users</a></li>  
+                    <li class="nav-item "><a class="nav-link" href="/users">Users</a></li> 
+                    <li class="nav-item "><a class="nav-link" href="/post/allposts">Posts</a></li>  
+                    <li class="nav-item "><a class="nav-link" href="/tags">Tags</a></li>   
                 </ul>
                 <ul class="navbar-nav align-self-center ml-auto">
                     <li class="nav-item"><a class="btn btn-sm btn-outline-dark ml-auto" href="/users/adduser">SIGN UP</a></li>
@@ -32,7 +34,20 @@
         </div>
     </nav>
 
-    <div class="container col-md-12 text-light ">
+    <div class="container col-md-12 text-light align-center">
+        <div class="row justify-content-center py-1 ">
+        
+            <div class="container-fluid col-sm-12 p-0 m-0" id="flash-messages">
+                {% for message in get_flashed_messages() %}
+                <div class="alert alert-success alert-dismissible fade show card col-sm-12" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %}    
+            </div>
+    </div>
         {% block content %}  {% endblock %}
     </div>
         
